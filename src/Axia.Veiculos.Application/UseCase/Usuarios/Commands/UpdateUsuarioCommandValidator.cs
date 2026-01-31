@@ -7,20 +7,14 @@ public class UpdateUsuarioCommandValidator : AbstractValidator<UpdateUsuarioComm
 {
     public UpdateUsuarioCommandValidator()
     {
-        RuleFor(x => x.Id)
-            .NotEmpty().WithMessage("Informe o Id do usuário");
+        RuleFor(x => x.Id).NotEmpty().WithMessage("Id obrigatório");
 
         RuleFor(x => x.Nome)
-            .NotEmpty().WithMessage("Nome não pode ser vazio")
-            .MinimumLength(3).WithMessage("Nome precisa ter ao menos 3 caracteres");
+            .NotEmpty().WithMessage("Nome obrigatório")
+            .MinimumLength(3).WithMessage("Nome: mín 3 caracteres");
 
         RuleFor(x => x.Role)
-            .NotEmpty().WithMessage("Informe a role")
-            .Must(BeValidRole).WithMessage("Role inválida. Valores aceitos: Reader, User, Admin");
-    }
-
-    private static bool BeValidRole(string role)
-    {
-        return Enum.TryParse<Role>(role, ignoreCase: true, out _);
+            .NotEmpty().WithMessage("Role obrigatória")
+            .Must(r => Enum.TryParse<Role>(r, true, out _)).WithMessage("Role inválida");
     }
 }

@@ -34,7 +34,6 @@ public class Result
     public static Result NotFound(string message = "Registro não encontrado")
         => new(false, message, 404);
 
-    // TODO: implementar log de erros 500 em arquivo
     public static Result InternalError(string message = "Erro interno do servidor")
         => new(false, message, 500);
 }

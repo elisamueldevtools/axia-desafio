@@ -11,9 +11,7 @@ public class CreateVeiculoCommandHandler(
 {
     public async Task<Result<Guid>> Handle(CreateVeiculoCommand request, CancellationToken cancellationToken)
     {
-        Enum.TryParse<Marca>(request.Marca, ignoreCase: true, out var marca);
-
-        var veiculo = Veiculo.Create(request.Descricao, marca, request.Modelo, request.Opcionais, request.Valor);
+        var veiculo = Veiculo.Create(request.Descricao, request.Marca, request.Modelo, request.Opcionais, request.Valor);
 
         await veiculoRepository.AddAsync(veiculo, cancellationToken);
 

@@ -1,6 +1,7 @@
 using Axia.Veiculos.Application.Common;
+using Axia.Veiculos.Domain.Enums;
 using MediatR;
 
 namespace Axia.Veiculos.Application.UseCase.Veiculos.Commands;
 
-public record CreateVeiculoCommand(string Descricao, string Marca, string Modelo, string? Opcionais, decimal? Valor) : IRequest<Result<Guid>>;
+public record CreateVeiculoCommand(string Descricao, Marca Marca, string Modelo, string? Opcionais, decimal? Valor) : IRequest<Result<Guid>>;

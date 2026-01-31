@@ -6,10 +6,7 @@ public class LoginCommandValidator : AbstractValidator<LoginCommand>
 {
     public LoginCommandValidator()
     {
-        RuleFor(x => x.Login)
-            .NotEmpty().WithMessage("Informe o login");
-
-        RuleFor(x => x.Senha)
-            .NotEmpty().WithMessage("Informe a senha");
+        RuleFor(x => x.Login).NotEmpty().WithMessage("Login obrigatório");
+        RuleFor(x => x.Senha).NotEmpty().WithMessage("Senha obrigatória");
     }
 }

@@ -15,9 +15,7 @@ public class UpdateVeiculoCommandHandler(
         if (veiculo is null)
             return Result.NotFound("Veículo não encontrado");
 
-        Enum.TryParse<Marca>(request.Marca, ignoreCase: true, out var marca);
-
-        veiculo.Update(request.Descricao, marca, request.Modelo, request.Opcionais, request.Valor);
+        veiculo.Update(request.Descricao, request.Marca, request.Modelo, request.Opcionais, request.Valor);
         await veiculoRepository.UpdateAsync(veiculo, cancellationToken);
 
         return Result.Success("Veículo atualizado");
